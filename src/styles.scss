@@ -11,6 +11,9 @@ $mtg-black: #373737;
 $mtg-red: #ba000d;
 $mtg-green: #087f23;
 
-.dark-theme {
-  @include mat.all-component-themes($fddp-theme-dark);
-}
+@include mat.all-component-themes($fddp-theme-dark);
+
+//.dark-theme {
+//
+//}
+
