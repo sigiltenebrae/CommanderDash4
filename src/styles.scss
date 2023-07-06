@@ -11,9 +11,58 @@ $mtg-black: #373737;
 $mtg-red: #ba000d;
 $mtg-green: #087f23;
 
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: Beleren, "Helvetica Neue", sans-serif !important;
+}
+
 @include mat.all-component-themes($fddp-theme-dark);
 
 //.dark-theme {
 //
 //}
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/**  Dashboard   **/
+.dashboard-columns {
+  display: grid;
+}
+
+.dashboard-deck-crop-wrapper, .dashboard-header {
+  height: 100%;
+  grid-column: 1;
+  justify-self: center;
+}
+
+.dashboard-deck-crop-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 300px);
+  gap: 10px 10px;
+}
+
+.dashboard-deck-crop {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  grid-row: 1;
+}
+
+.dashboard-deck-crop-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 560px;
+  width: 360px;
+  margin-left: -30px;
+  margin-top: -70px;
+  opacity: 0.9;
+  background-color: black;
+  z-index: 1;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
