@@ -46,6 +46,11 @@ export class DashboardComponent implements OnInit{
   winlossChartPlugins = [];
   winlossChartOptions: ChartConfiguration<'bar'>['options'];
 
+  colordistChartData: ChartConfiguration<'radar'>['data'] | undefined;
+  colordistChartLegend = false;
+  colordistChartPlugins = [];
+  colordistChartOptions: ChartConfiguration<'radar'>['options'];
+
   ngOnInit(): void {
     this.winlossChartData = {
       labels: ['This Deck', 'Sigiltenebrae', 'Average'],
@@ -105,6 +110,48 @@ export class DashboardComponent implements OnInit{
         }
       }
     };
+    this.colordistChartData = {
+      labels: ['W', 'U', 'B', 'R', 'G'],
+      datasets: [
+        {
+          label: 'Deck Colors',
+          data: [2, 4, 10, 7, 3],
+        },
+      ]
+    }
+    this.colordistChartOptions = {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Deck Color Distribution',
+          color: 'rgb(255, 255, 255)'
+        },
+        legend: {
+          labels: {
+            color: 'rgb(255, 255, 255)'
+          }
+        },
+      },
+      scales : {
+        r: {
+          ticks: {
+            color: 'rgba(255, 255, 255, 0)',
+            backdropColor: 'rgba(198, 0, 198, 0)'
+          },
+          angleLines: {
+            color: 'rgba(255, 255, 255, 0.3)'
+          },
+          grid: {
+            circular: true,
+            color: 'rgba(255, 255, 255, 0.3)'
+          },
+          pointLabels: {
+            color: 'rgb(255, 255, 255)',
+          }
+        }
+      }
+    }
   }
 
 }
