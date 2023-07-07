@@ -37,15 +37,7 @@ body {
   padding: 0;
 }
 
-/**  Dashboard   **/
-.dashboard-active-game-wrapper {
-  background-color: rgba(black, 0.2);
-  height: 80px;
-  border-radius: 4px;
-  min-width: 200px;
-}
-
-.dashboard-deck-crop {
+.deck-crop {
   position: relative;
   width: 300px;
   height: 200px;
@@ -53,7 +45,7 @@ body {
   grid-row: 1;
 }
 
-.dashboard-deck-crop-image {
+.deck-crop-image {
   position: absolute;
   top: 0;
   left: 0;
@@ -76,4 +68,37 @@ body {
   position: absolute;
   width: 254px;
   height: 355px;
+}
+
+/**  Dashboard   **/
+.dashboard-active-game-wrapper {
+  background-color: rgba(black, 0.2);
+  height: 80px;
+  border-radius: 4px;
+  min-width: 200px;
+}
+
+.deck-crop .dashboard-deck-info {
+  position: absolute;
+  z-index: 2;
+  top: 5px;
+  left: 10px;
+}
+
+.deck-crop .dashboard-deck-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
+  display: none;
+}
+
+.deck-crop:hover .dashboard-deck-button {
+  display: block;
+}
+
+.deck-crop:hover .dashboard-deck-info {
+  opacity: 0.6;
 }
