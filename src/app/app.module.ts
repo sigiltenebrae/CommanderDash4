@@ -9,6 +9,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import { NgChartsModule } from 'ng2-charts';
 import {NgScrollbarModule} from "ngx-scrollbar";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {NgScrollbarModule} from "ngx-scrollbar";
     MatButtonModule,
     NgChartsModule,
     NgScrollbarModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
