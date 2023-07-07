@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit{
   winlossChartOptions: ChartConfiguration<'bar'>['options'];
 
   colordistChartData: ChartConfiguration<'radar'>['data'] | undefined;
-  colordistChartLegend = false;
+  colordistChartLegend = true;
   colordistChartPlugins = [];
   colordistChartOptions: ChartConfiguration<'radar'>['options'];
 
@@ -114,13 +114,17 @@ export class DashboardComponent implements OnInit{
       labels: ['W', 'U', 'B', 'R', 'G'],
       datasets: [
         {
-          label: 'Deck Colors',
+          label: 'Player',
           data: [2, 4, 10, 7, 3],
         },
+        {
+          label: 'Table',
+          data: [5, 6, 4, 2, 9]
+        }
       ]
     }
     this.colordistChartOptions = {
-      responsive: false,
+      responsive: true,
       plugins: {
         title: {
           display: true,
@@ -128,6 +132,7 @@ export class DashboardComponent implements OnInit{
           color: 'rgb(255, 255, 255)'
         },
         legend: {
+          display: true,
           labels: {
             color: 'rgb(255, 255, 255)'
           }
