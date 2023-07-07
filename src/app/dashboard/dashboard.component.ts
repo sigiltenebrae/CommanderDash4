@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit{
   winlossChartOptions: ChartConfiguration<'bar'>['options'];
 
   colordistChartData: ChartConfiguration<'radar'>['data'] | undefined;
-  colordistChartLegend = true;
+  colordistChartLegend = false;
   colordistChartPlugins = [];
   colordistChartOptions: ChartConfiguration<'radar'>['options'];
 
@@ -127,12 +127,11 @@ export class DashboardComponent implements OnInit{
       responsive: true,
       plugins: {
         title: {
-          display: true,
+          display: false,
           text: 'Deck Color Distribution',
           color: 'rgb(255, 255, 255)'
         },
         legend: {
-          display: true,
           labels: {
             color: 'rgb(255, 255, 255)'
           }
@@ -152,7 +151,7 @@ export class DashboardComponent implements OnInit{
             color: 'rgba(255, 255, 255, 0.3)'
           },
           pointLabels: {
-            color: 'rgb(255, 255, 255)',
+            color: 'rgba(255, 255, 255, 0)',
           }
         }
       }

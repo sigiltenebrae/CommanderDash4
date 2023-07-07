@@ -71,16 +71,15 @@
         <mat-card style="padding: 10px; height: 100%">
           <div class="container">
             <div class="row">
-              <div class="col-1"></div>
-              <div class="col-10">
-                <canvas baseChart
-                        [data]="colordistChartData"
-                        [options]="colordistChartOptions"
-                        [plugins]="colordistChartPlugins"
-                        [legend]="colordistChartLegend"
-                        [type]="'radar'"></canvas>
+              <div class="col">
+                <h3>Deck Color Distribution</h3>
+                <canvas baseChart class="dashboard-radar-gradient"
+                              [data]="colordistChartData"
+                              [options]="colordistChartOptions"
+                              [plugins]="colordistChartPlugins"
+                              [legend]="colordistChartLegend"
+                              [type]="'radar'"></canvas>
               </div>
-              <div class="col-1"></div>
             </div>
           </div>
         </mat-card>
