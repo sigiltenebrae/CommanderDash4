@@ -1,25 +1,76 @@
-<div style="margin: 0; padding: 0;" class="w-full h-full">
-  <div class="dashboard-columns">
-
-    <div class="dashboard-header">
-      <h3>Recent Decks</h3>
-    </div>
-
-    <div *ngIf="windowWidth <= 400" class="dashboard-deck-crop-wrapper">
-      <ngb-carousel
-        [showNavigationIndicators]="false">
-        <ng-template ngbSlide *ngFor="let deck of decks.slice(0, 5)">
-          <div class="dashboard-deck-crop">
-            <img class="dashboard-deck-crop-image" src="{{deck.image}}">
+<div style="width: 100vw; height: 100vh; padding: 10px">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <mat-card style="padding: 10px; height: 100%">
+          <div class="container">
+            <h3>Last Played:</h3>
+            <div class="row">
+              <div class="col">
+                <div class="mtg-card-wrapper">
+                  <img class="mtg-card-image" src="https://cards.scryfall.io/png/front/7/8/786156ce-544c-4aa4-8381-756042d0bcda.png?1630176407">
+                </div>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <h5>Name: Some of You May Die</h5>
+                  <h5>Commander: Extus Oriq Overlord // Awaken the Blood Avatar</h5>
+                  <h5>Result: Loss</h5>
+                </div>
+                <div class="row">
+                  <canvas baseChart style="height: 250px"
+                          [data]="winlossChartData"
+                          [options]="winlossChartOptions"
+                          [plugins]="winlossChartPlugins"
+                          [legend]="winlossChartLegend"
+                          [type]="'bar'"></canvas>
+                </div>
+              </div>
+            </div>
           </div>
-        </ng-template>
-      </ngb-carousel>
+        </mat-card>
+      </div>
+      <div class="col-12 col-md-8 col-lg-5 col-xl-4">
+        <mat-card style="height: 500px; padding: 10px;">
+          <div class="container">
+            <h3>Active Games:</h3>
+            <div class="col">
+              <div class="row" *ngFor="let i of [1, 2, 3, 4]" style="margin-top: 5px">
+                <div class="container dashboard-active-game-wrapper">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row" style="margin-top: 5px">
+                        <p *ngIf="windowWidth < 540">Test Game {{i}}</p>
+                        <p *ngIf="windowWidth >= 540">Test Game {{i}} - Commander</p>
+                      </div>
+                      <div class="row" style="margin-top: 5px">
+                        <p>Players: 0 of 5</p>
+                      </div>
+                    </div>
+                    <div class="col-6 col-xl-4">
+                      <div class="row" style="justify-content: right; padding: 5px">
+                        <button mat-raised-button color="primary" style="width: 100px">JOIN</button>
+                      </div>
+                      <div class="row" style="margin-top: 5px; text-align: right">
+                        <p>Time: 00:00</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
     </div>
-
-    <div *ngIf="windowWidth > 400" class="dashboard-deck-crop-wrapper">
-      <div class="dashboard-deck-crop-grid">
-        <div class="dashboard-deck-crop" *ngFor="let deck of decks.slice(0, 5)">
-          <img class="dashboard-deck-crop-image" src="{{deck.image}}">
+    <div class="row" style="margin: 10px">
+      <div class="container-fluid">
+        <div class="row flex-nowrap" style="overflow-x: auto; overflow-y: hidden">
+          <div *ngFor="let deck of decks.slice(0, 5); let i = index" class="col">
+            <div class="dashboard-deck-crop">
+              <img class="dashboard-deck-crop-image" src="{{deck.image}}">
+            </div>
+          </div>
         </div>
       </div>
     </div>

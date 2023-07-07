@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ChartConfiguration} from "chart.js";
 
 @Component({
   selector: 'app-dashboard',
@@ -40,8 +41,70 @@ export class DashboardComponent implements OnInit{
   windowWidth: number = window.innerWidth;
   windowHeight: number = window.innerHeight;
 
-  ngOnInit(): void {
+  winlossChartData: ChartConfiguration<'bar'>['data'] | undefined;
+  winlossChartLegend =  false;
+  winlossChartPlugins = [];
+  winlossChartOptions: ChartConfiguration<'bar'>['options'];
 
+  ngOnInit(): void {
+    this.winlossChartData = {
+      labels: ['This Deck', 'Sigiltenebrae', 'Average'],
+      datasets: [
+        {
+          data: [
+            1.3, 0.4, 0.70
+          ],
+          backgroundColor: [ //300
+            '#64b5f6bb',
+            '#e57373bb',
+            '#81c784bb'
+          ],
+          borderColor: [ //400
+            '#42a5f5bb',
+            '#ef5350bb',
+            '#66bb6abb'
+          ],
+          hoverBackgroundColor: [ //500
+            '#2196f3bb',
+            '#f44336bb',
+            '#4caf50bb'
+          ],
+          hoverBorderColor: [ //600
+            '#1e88e5bb',
+            '#e53935bb',
+            '#43a047bb'
+          ],
+          borderWidth: 1,
+        }
+      ]
+    };
+    this.winlossChartOptions = {
+      responsive: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Win/Loss Ratio',
+          color: 'rgb(198, 198, 198)'
+        },
+        legend: {
+          labels: {
+            color: 'rgb(198, 198, 198)'
+          }
+        }
+      },
+      scales: {
+        y: {
+          ticks: {
+            color: 'rgb(198, 198, 198)'
+          }
+        },
+        x: {
+          ticks: {
+            color: 'rgb(198, 198, 198)'
+          }
+        }
+      }
+    };
   }
 
 }
