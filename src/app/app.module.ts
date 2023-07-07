@@ -10,11 +10,15 @@ import {MatButtonModule} from "@angular/material/button";
 import { NgChartsModule } from 'ng2-charts';
 import {NgScrollbarModule} from "ngx-scrollbar";
 import {MatDividerModule} from "@angular/material/divider";
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    ToolbarComponent
   ],
   imports: [
     RouterModule.forRoot([
@@ -27,6 +31,8 @@ import {MatDividerModule} from "@angular/material/divider";
     NgChartsModule,
     NgScrollbarModule,
     MatDividerModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
