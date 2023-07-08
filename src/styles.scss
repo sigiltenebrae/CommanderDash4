@@ -108,21 +108,3 @@ body {
 .deck-crop:hover .dashboard-deck-info {
   opacity: 0.6;
 }
-
-.dashboard-radar-gradient {
-  background-repeat: no-repeat;
-  background-image: conic-gradient(from 36deg at 50% calc(50% + 7px),
-    rgba($mtg-blue, 0.33) 0deg,
-    rgba($mtg-blue, 0.33) 72deg,
-    rgba($mtg-black, 0.33) 72deg,
-    rgba($mtg-black, 0.33) 144deg,
-    rgba($mtg-red, 0.33) 144deg,
-    rgba($mtg-red, 0.33) 216deg,
-    rgba($mtg-green, 0.33) 216deg,
-    rgba($mtg-green, 0.33) 288deg,
-    rgba($mtg-white, 0.33) 288deg,
-    rgba($mtg-white, 0.33) 360.01deg);
-  clip-path: circle(45% at 50% calc(50% + 7px));
-  padding: 10px;
-  max-height: 400px;
-}

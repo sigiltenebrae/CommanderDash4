@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ChartConfiguration} from "chart.js";
+import {ChartConfiguration, TooltipItem} from "chart.js";
 
 @Component({
   selector: 'app-dashboard',
@@ -46,10 +46,13 @@ export class DashboardComponent implements OnInit{
   winlossChartPlugins = [];
   winlossChartOptions: ChartConfiguration<'bar'>['options'];
 
-  colordistChartData: ChartConfiguration<'radar'>['data'] | undefined;
+  colordistChartData: ChartConfiguration<'doughnut'>['data'] | undefined;
   colordistChartLegend = false;
   colordistChartPlugins = [];
-  colordistChartOptions: ChartConfiguration<'radar'>['options'];
+  colordistChartOptions: ChartConfiguration<'doughnut'>['options'];
+
+  mtgColorBackground = {white: '#eeeeeebb', blue: '#64b5f6bb', black: '#9e9e9ebb', red: '#e57373bb', green: '#81c784bb'}
+  mtgColorBorder = {white: '#e0e0e0bb', blue: '#42a5f5bb', black: '#757575bb', red: '#ef5350bb', green: '#66bb6abb'}
 
   ngOnInit(): void {
     this.winlossChartData = {
@@ -111,15 +114,19 @@ export class DashboardComponent implements OnInit{
       }
     };
     this.colordistChartData = {
-      labels: ['W', 'U', 'B', 'R', 'G'],
+      labels: ['White', 'Blue', 'Black', 'Red', 'Green'],
       datasets: [
+        {
+          label: 'Table',
+          data: [5, 6, 4, 2, 9],
+          backgroundColor: [this.mtgColorBackground.white, this.mtgColorBackground.blue, this.mtgColorBackground.black, this.mtgColorBackground.red, this.mtgColorBackground.green],
+          borderColor: ['rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.3)']
+        },
         {
           label: 'Player',
           data: [2, 4, 10, 7, 3],
-        },
-        {
-          label: 'Table',
-          data: [5, 6, 4, 2, 9]
+          backgroundColor:  [this.mtgColorBackground.white, this.mtgColorBackground.blue, this.mtgColorBackground.black, this.mtgColorBackground.red, this.mtgColorBackground.green],
+          borderColor: ['rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.3)']
         }
       ]
     }
@@ -136,25 +143,32 @@ export class DashboardComponent implements OnInit{
             color: 'rgb(255, 255, 255)'
           }
         },
-      },
-      scales : {
-        r: {
-          ticks: {
-            color: 'rgba(255, 255, 255, 0)',
-            backdropColor: 'rgba(198, 0, 198, 0)'
-          },
-          angleLines: {
-            color: 'rgba(255, 255, 255, 0.3)'
-          },
-          grid: {
-            circular: true,
-            color: 'rgba(255, 255, 255, 0.3)'
-          },
-          pointLabels: {
-            color: 'rgba(255, 255, 255, 0)',
+        tooltip: {
+          callbacks: {
+            // @ts-ignore
+            label: (item: TooltipItem<"doughnut">) => {
+                console.log(item);
+              // @ts-ignore
+                return this.colordistChartData.datasets[item.datasetIndex].label+ " " + this.colordistChartData.labels[item.dataIndex]+ ": "+ this.colordistChartData.datasets[item.datasetIndex].data[item.dataIndex];
+            }
           }
         }
-      }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: 'rgba(255, 255, 255, 0)'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0)'
+          },
+        }
+      },
+      animation: {
+        animateRotate: true,
+        duration: 2000,
+      },
+
     }
   }
 
