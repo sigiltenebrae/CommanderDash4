@@ -43,19 +43,14 @@
           <div class="container">
             <h3>Last Played:</h3>
             <div class="row">
-              <div class="col" style="margin-bottom: 20px">
-                <div class="mtg-card-wrapper">
-                  <img class="mtg-card-image" src="https://cards.scryfall.io/png/front/7/8/786156ce-544c-4aa4-8381-756042d0bcda.png?1630176407">
-                </div>
-              </div>
               <div class="col">
                 <div class="row">
-                  <h5>Name: Some of You May Die</h5>
+                  <h5>Some of You May Die</h5>
                   <h5>Commander: Extus Oriq Overlord // Awaken the Blood Avatar</h5>
                   <h5>Result: Loss</h5>
                 </div>
                 <div class="row">
-                  <canvas baseChart style="height: 250px"
+                  <canvas baseChart
                           [data]="winlossChartData"
                           [options]="winlossChartOptions"
                           [plugins]="winlossChartPlugins"

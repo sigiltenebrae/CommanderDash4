@@ -124,4 +124,5 @@ body {
     rgba($mtg-white, 0.33) 360.01deg);
   clip-path: circle(45% at 50% calc(50% + 7px));
   padding: 10px;
+  max-height: 400px;
 }
