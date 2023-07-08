@@ -149,7 +149,7 @@ export class DashboardComponent implements OnInit{
             label: (item: TooltipItem<"doughnut">) => {
                 console.log(item);
               // @ts-ignore
-                return this.colordistChartData.datasets[item.datasetIndex].label+ " " + this.colordistChartData.labels[item.dataIndex]+ ": "+ this.colordistChartData.datasets[item.datasetIndex].data[item.dataIndex];
+                return this.colordistChartData.datasets[item.datasetIndex].label+ " " + this.colordistChartData.labels[item.dataIndex]+ ": "+ this.colordistChartData.datasets[item.datasetIndex].data[item.dataIndex] + "%";
             }
           }
         }
